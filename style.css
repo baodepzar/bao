@@ -274,6 +274,33 @@ body {
     transition: width 0.3s ease;
 }
 
+/* Mobile Move Button */
+.move-button {
+    background: #4caf50;
+    color: #ffffff;
+    border: none;
+    padding: 20px 40px;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+}
+
+.move-button:hover {
+    background: #66bb6a;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+}
+
+.move-button:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: 0 3px 10px rgba(76, 175, 80, 0.3);
+}
+
 /* Dalgona Cookie Game */
 .cookie-container {
     background: #8D6E63;
@@ -657,6 +684,7 @@ body {
     .game-button {
         padding: 15px 20px;
         font-size: 1rem;
+        min-height: 60px;
     }
     
     .game-header {
@@ -671,6 +699,7 @@ body {
     
     .game-area {
         padding: 20px;
+        min-height: 300px;
     }
     
     .rope-container {
@@ -684,15 +713,32 @@ body {
     
     .marble-choices {
         flex-direction: column;
+        gap: 15px;
+    }
+    
+    .choice-button {
+        min-height: 50px;
     }
     
     .glass-panel {
         width: 140px;
         height: 50px;
+        min-height: 50px;
     }
     
     .bridge {
         max-width: 300px;
+    }
+    
+    .tug-button, .move-button {
+        min-height: 60px;
+        font-size: 1rem;
+    }
+    
+    #cookieCanvas {
+        touch-action: none;
+        max-width: 100%;
+        height: auto;
     }
 }
 

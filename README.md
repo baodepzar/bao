@@ -1,113 +1,152 @@
-# Squid Game Web Edition
+# 🦑 SQUID GAME - Web Edition cho Điện Thoại
+### Trò chơi sinh tồn trên web được tối ưu hóa cho mobile
 
-A web-based recreation of the popular games from the Netflix series "Squid Game". This interactive application features 5 mini-games inspired by the show, built with HTML, CSS, and JavaScript.
+## 📱 Giới thiệu
+Trải nghiệm lại những thử thách gay cấn từ bộ phim Squid Game trực tiếp trên điện thoại của bạn! Ứng dụng web này được thiết kế đặc biệt cho người dùng mobile với giao diện cảm ứng thân thiện.
 
-## 🎮 Games Included
+## 🎮 Các Trò Chơi
 
-### 1. Red Light, Green Light (무궁화 꽃이 피었습니다)
-- **Objective**: Reach the finish line before time runs out
-- **Controls**: Press `SPACE` to move forward
-- **Rule**: Only move when the green light is on. Moving during red light eliminates you!
+### 1. 🚦 Đèn Đỏ, Đèn Xanh (Red Light, Green Light)
+- **Mục tiêu**: Di chuyển đến vạch đích trong thời gian cho phép
+- **Cách chơi**: 
+  - Chạm vào màn hình hoặc nút "TAP TO MOVE!" khi đèn xanh sáng
+  - Dừng lại khi đèn đỏ sáng
+  - Trên PC: Nhấn phím Space
+- **Thời gian**: 30 giây
 
-### 2. Dalgona Cookie (달고나)
-- **Objective**: Carefully carve out the star shape from the cookie
-- **Controls**: Use your mouse to trace around the shape
-- **Rule**: Don't break the cookie! You have 3 lives and 60 seconds
+### 2. 🍪 Kẹo Dalgona (Dalgona Cookie)
+- **Mục tiêu**: Cắt hình ngôi sao từ kẹo mà không làm vỡ
+- **Cách chơi**: 
+  - Dùng ngón tay để vẽ/cắt quanh hình ngôi sao
+  - Giữ độ chính xác trên 70%
+  - Hỗ trợ cảm ứng đa điểm
+- **Thời gian**: 60 giây
+- **Mạng sống**: 3 ❤️
 
-### 3. Tug of War (줄다리기)
-- **Objective**: Pull the rope to your side to win
-- **Controls**: Click the "PULL!" button rapidly
-- **Rule**: Build power faster than your opponents to avoid being pulled over the edge
+### 3. 🪢 Kéo Co (Tug of War)
+- **Mục tiêu**: Kéo đội đối thủ qua vạch biên
+- **Cách chơi**: Nhấn nút "PULL!" liên tục để tăng sức mạnh
+- **Chiến lược**: Nhấn nhanh và đều đặn
 
-### 4. Marbles (구슬치기)
-- **Objective**: Win all your opponent's marbles
-- **Controls**: Choose odd or even and place your bet
-- **Rule**: Guess correctly to win marbles, guess wrong to lose them
+### 4. 🔮 Bi Kính (Marbles - Chẵn/Lẻ)
+- **Mục tiêu**: Đoán đúng số bi trong tay đối thủ
+- **Cách chơi**: 
+  - Đặt cược số bi muốn chơi
+  - Chọn "ODD" (lẻ) hoặc "EVEN" (chẵn)
+  - Thắng để lấy bi của đối thủ
+- **Điều kiện thắng**: Lấy hết 10 bi của đối thủ
 
-### 5. Glass Bridge (유리다리)
-- **Objective**: Cross the bridge by choosing the safe glass panels
-- **Controls**: Click LEFT or RIGHT to choose a panel
-- **Rule**: One panel is safe (tempered glass), one will break. Choose wisely!
+### 5. 🌉 Cầu Kính (Glass Bridge)
+- **Mục tiêu**: Qua cầu bằng cách chọn tấm kính an toàn
+- **Cách chơi**: 
+  - Chọn LEFT hoặc RIGHT cho mỗi bước
+  - Tấm kính cường lực sẽ không vỡ (màu xanh)
+  - Tấm kính thường sẽ vỡ (màu đỏ)
+- **Thử thách**: 10 bước để hoàn thành
 
-## 🚀 How to Run
+## 📱 Tính năng Mobile
 
-1. Clone or download this repository
-2. Open `index.html` in a web browser
-3. No server setup required - runs entirely in the browser!
+### ✨ Tối ưu hóa cảm ứng
+- **Điều khiển cảm ứng**: Hỗ trợ tap, swipe, và multi-touch
+- **Nút bấm lớn**: Dễ dàng chạm trên màn hình nhỏ
+- **Giao diện responsive**: Tự động điều chỉnh theo kích thước màn hình
+- **Phông chữ tiếng Hàn**: Noto Sans KR cho trải nghiệm chân thực
 
-## 🎨 Features
+### 🎯 Trải nghiệm người dùng
+- **Hiệu ứng visual**: Gradient, shadow, và animation mượt mà
+- **Âm thanh phản hồi**: Hiệu ứng khi chạm nút
+- **Haptic feedback**: Rung khi tương tác (trên thiết bị hỗ trợ)
+- **Chống cuộn trang**: Không bị cuộn khi vẽ trên canvas
 
-- **Authentic Design**: Dark theme with red/pink accents matching the show's aesthetic
-- **Korean Typography**: Uses Noto Sans KR font for authentic feel
-- **Responsive Design**: Works on desktop and mobile devices
-- **Interactive Gameplay**: Each game has unique mechanics and challenges
-- **Win/Lose Conditions**: Complete games to advance or face elimination
-- **Visual Effects**: Smooth animations and hover effects
+## 🚀 Cách chạy ứng dụng
 
-## 🎯 Game Mechanics
+### Trên máy chủ local:
+```bash
+# Khởi động web server
+python3 -m http.server 8000
 
-### Red Light, Green Light
-- 30-second timer
-- Random light switching intervals (2-5 seconds)
-- Progressive movement system
-- Instant elimination for rule violations
+# Mở trình duyệt và truy cập:
+http://localhost:8000
+```
 
-### Dalgona Cookie
-- 60-second timer
-- Precision tracking system
-- Three lives per attempt
-- Canvas-based drawing mechanics
+### Trên điện thoại:
+1. Đảm bảo điện thoại và máy tính cùng mạng WiFi
+2. Tìm địa chỉ IP của máy tính (ví dụ: 192.168.1.100)
+3. Trên điện thoại, mở browser và truy cập: `http://192.168.1.100:8000`
+4. Thêm vào màn hình chính để có trải nghiệm như app
 
-### Tug of War
-- Real-time power competition
-- Click-based gameplay
-- Dynamic rope position
-- Opponent AI with varying difficulty
+## 🎨 Thiết kế
 
-### Marbles
-- Turn-based betting system
-- Random number generation
-- Progressive difficulty as stakes increase
-- Strategic marble management
+### Màu sắc chủ đạo:
+- **Đỏ Squid Game**: #ff1744 (màu chính)
+- **Đen gradient**: Background tối
+- **Xanh lá**: #4caf50 (thành công)
+- **Vàng**: #ffff00 (cảnh báo/giải thưởng)
 
-### Glass Bridge
-- 10-step challenge
-- Random safe/unsafe pattern generation
-- One-chance elimination system
-- Visual feedback for choices
+### Typography:
+- **Font chính**: Noto Sans KR (hỗ trợ tiếng Hàn)
+- **Fallback**: Sans-serif system fonts
 
-## 🛠️ Technical Details
+## 📱 Hỗ trợ thiết bị
 
-- **HTML5**: Semantic structure with canvas support
-- **CSS3**: Advanced styling with gradients, animations, and blur effects
-- **JavaScript**: Game logic, state management, and interactive controls
-- **No Dependencies**: Pure vanilla JavaScript implementation
+### ✅ Tương thích:
+- **iOS Safari** (iPhone/iPad)
+- **Android Chrome** 
+- **Android Samsung Internet**
+- **Desktop browsers** (Chrome, Firefox, Safari, Edge)
 
-## 🎪 Easter Eggs
+### 📋 Yêu cầu:
+- **JavaScript**: Enabled
+- **Canvas API**: Hỗ trợ HTML5 Canvas
+- **Touch Events**: Cho điều khiển cảm ứng
+- **CSS3**: Transforms và animations
 
-- Korean text elements (웹 게임 에디션)
-- Squid Game symbols (●▲■)
-- Player 456 reference
-- Prize money display (₩1,000,000)
-- Authentic color scheme and typography
+## � Luật chơi và điểm số
 
-## 📱 Browser Compatibility
+### Thắng/Thua:
+- **Thắng**: Hoàn thành mục tiêu của từng trò chơi
+- **Thua**: Vi phạm luật hoặc hết thời gian
+- **Giải thưởng**: ₩1,000,000 cho mỗi trò chơi thắng
 
-- Chrome (recommended)
-- Firefox
-- Safari
-- Edge
-- Mobile browsers
+### Hệ thống progression:
+- Chơi tuần tự các trò chơi
+- Unlock từng level sau khi hoàn thành
+- Restart không giới hạn
 
-## 🔧 Development
+## 🛠️ Công nghệ sử dụng
 
-The project is structured as follows:
-- `index.html` - Main HTML structure
-- `style.css` - Complete styling and responsive design
-- `script.js` - Game logic and state management
+- **HTML5**: Cấu trúc và Canvas API
+- **CSS3**: Styling và responsive design
+- **Vanilla JavaScript**: Game logic và tương tác
+- **Google Fonts**: Typography (Noto Sans KR)
+- **Progressive Web App**: Có thể cài đặt như app native
 
-## 🎉 Have Fun!
+## 🔧 Tùy chỉnh
 
-Experience the thrill of Squid Game without the life-or-death consequences! Test your skills, reflexes, and luck across all five games. Remember: every choice matters, and only the best players survive to the end.
+### Độ khó:
+- Thời gian có thể điều chỉnh trong code
+- Tốc độ AI opponent có thể thay đổi
+- Số lượng bước cầu kính có thể tùy chỉnh
 
-**Good luck, Player 456!** 🏆
+### Giao diện:
+- Dễ dàng thay đổi màu sắc trong CSS
+- Thêm âm thanh bằng Web Audio API
+- Tích hợp high score system
+
+## 📞 Hỗ trợ
+
+### Báo lỗi:
+- Game lag trên thiết bị cũ
+- Touch không responsive
+- Canvas không hoạt động
+
+### Tối ưu hóa:
+- Đóng các app khác khi chơi
+- Sử dụng WiFi ổn định
+- Cập nhật browser lên phiên bản mới nhất
+
+---
+
+**🎭 "Player 456, welcome to the game!"**
+
+*Chúc bạn may mắn và sống sót qua tất cả các thử thách!* 🦑

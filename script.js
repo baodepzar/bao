@@ -206,10 +206,45 @@ function initRedLightGame() {
     
     // Keyboard controls
     document.addEventListener('keydown', handleRedLightKeydown);
+    
+    // Touch controls for mobile
+    document.addEventListener('touchstart', handleRedLightTouch);
+    document.addEventListener('click', handleRedLightClick);
+    
+    // Add specific move button listener
+    const moveButton = document.getElementById('moveButton');
+    if (moveButton) {
+        moveButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            movePlayer();
+        });
+        moveButton.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            movePlayer();
+        });
+    }
 }
 
 function handleRedLightKeydown(e) {
     if (e.code === 'Space' && gameStates.redLight.isRunning) {
+        e.preventDefault();
+        movePlayer();
+    }
+}
+
+// New touch handler for mobile
+function handleRedLightTouch(e) {
+    if (gameStates.redLight.isRunning && e.target.closest('#redLight')) {
+        e.preventDefault();
+        movePlayer();
+    }
+}
+
+// New click handler for mobile
+function handleRedLightClick(e) {
+    if (gameStates.redLight.isRunning && e.target.closest('#redLight')) {
         e.preventDefault();
         movePlayer();
     }
@@ -287,6 +322,11 @@ function initDalgonaGame() {
     state.canvas.addEventListener('mousemove', draw);
     state.canvas.addEventListener('mouseup', stopDrawing);
     state.canvas.addEventListener('mouseout', stopDrawing);
+    
+    // Touch events for mobile
+    state.canvas.addEventListener('touchstart', startTouchDrawing);
+    state.canvas.addEventListener('touchmove', touchDraw);
+    state.canvas.addEventListener('touchend', stopDrawing);
 }
 
 function drawCookieShape() {
@@ -387,6 +427,61 @@ function stopDrawing() {
         showWin();
         clearInterval(state.gameInterval);
         state.isRunning = false;
+    }
+}
+
+// Touch drawing functions for mobile
+function startTouchDrawing(e) {
+    e.preventDefault();
+    const state = gameStates.dalgona;
+    if (!state.isRunning) return;
+    
+    state.isDrawing = true;
+    const rect = state.canvas.getBoundingClientRect();
+    const touch = e.touches[0];
+    const x = touch.clientX - rect.left;
+    const y = touch.clientY - rect.top;
+    
+    state.path = [{ x, y }];
+}
+
+function touchDraw(e) {
+    e.preventDefault();
+    const state = gameStates.dalgona;
+    if (!state.isDrawing || !state.isRunning) return;
+    
+    const rect = state.canvas.getBoundingClientRect();
+    const touch = e.touches[0];
+    const x = touch.clientX - rect.left;
+    const y = touch.clientY - rect.top;
+    
+    state.path.push({ x, y });
+    
+    // Draw the path
+    const ctx = state.ctx;
+    ctx.strokeStyle = '#5D4037';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(state.path[state.path.length - 2].x, state.path[state.path.length - 2].y);
+    ctx.lineTo(x, y);
+    ctx.stroke();
+    
+    // Check precision (simplified)
+    if (Math.random() < 0.1) { // 10% chance to lose precision
+        state.precision = Math.max(0, state.precision - Math.random() * 10);
+        updateDalgonaUI();
+        
+        if (state.precision < 30) {
+            state.lives--;
+            if (state.lives <= 0) {
+                showGameOver("Your cookie broke! You've been eliminated!");
+                clearInterval(state.gameInterval);
+                state.isRunning = false;
+            } else {
+                state.precision = 100;
+                drawCookieShape();
+            }
+        }
     }
 }
 
@@ -635,6 +730,8 @@ document.addEventListener('DOMContentLoaded', function() {
 // Remove event listeners when switching games
 function removeEventListeners() {
     document.removeEventListener('keydown', handleRedLightKeydown);
+    document.removeEventListener('touchstart', handleRedLightTouch);
+    document.removeEventListener('click', handleRedLightClick);
     
     const tugButton = document.getElementById('tugButton');
     if (tugButton) {
@@ -647,5 +744,8 @@ function removeEventListeners() {
         canvas.removeEventListener('mousemove', draw);
         canvas.removeEventListener('mouseup', stopDrawing);
         canvas.removeEventListener('mouseout', stopDrawing);
+        canvas.removeEventListener('touchstart', startTouchDrawing);
+        canvas.removeEventListener('touchmove', touchDraw);
+        canvas.removeEventListener('touchend', stopDrawing);
     }
 }
