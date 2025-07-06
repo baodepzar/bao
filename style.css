@@ -1,0 +1,713 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: linear-gradient(135deg, #000000, #1a1a1a);
+    color: #ffffff;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Screen Management */
+.screen {
+    display: none;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* Main Menu Styles */
+.logo {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.squid-symbol {
+    font-size: 4rem;
+    color: #ff1744;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(255, 23, 68, 0.5);
+}
+
+.logo h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ff1744;
+    text-shadow: 0 0 30px rgba(255, 23, 68, 0.5);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #cccccc;
+    font-weight: 300;
+}
+
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.game-button {
+    background: linear-gradient(45deg, #2c2c2c, #404040);
+    border: 2px solid #ff1744;
+    color: #ffffff;
+    padding: 20px 30px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1.1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.game-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 23, 68, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.game-button:hover::before {
+    left: 100%;
+}
+
+.game-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 23, 68, 0.3);
+    border-color: #ff4569;
+}
+
+.game-number {
+    background: #ff1744;
+    color: #ffffff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.game-name {
+    font-weight: 500;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 50px;
+    color: #888;
+}
+
+/* Game Screen Styles */
+.game-screen {
+    background: radial-gradient(circle at center, #1a1a1a, #000000);
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.back-button {
+    background: #ff1744;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background: #ff4569;
+    transform: translateY(-2px);
+}
+
+.game-header h2 {
+    font-size: 2rem;
+    color: #ff1744;
+    text-shadow: 0 0 20px rgba(255, 23, 68, 0.5);
+}
+
+.timer {
+    font-size: 1.2rem;
+    color: #ffff00;
+    font-weight: 500;
+}
+
+.game-area {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 30px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.instructions {
+    text-align: center;
+    margin-top: 20px;
+    color: #cccccc;
+}
+
+.instructions p {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+/* Red Light Green Light Game */
+.traffic-light {
+    display: flex;
+    flex-direction: column;
+    background: #333;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.light {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 10px;
+    border: 3px solid #666;
+    transition: all 0.3s ease;
+}
+
+.light.red {
+    background: #333;
+}
+
+.light.red.active {
+    background: #ff1744;
+    box-shadow: 0 0 30px rgba(255, 23, 68, 0.8);
+}
+
+.light.green {
+    background: #333;
+}
+
+.light.green.active {
+    background: #4caf50;
+    box-shadow: 0 0 30px rgba(76, 175, 80, 0.8);
+}
+
+.player-area {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(90deg, #2c2c2c, #404040);
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.player {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    transition: left 0.3s ease;
+}
+
+.finish-line {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #ff1744;
+    color: #ffffff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, #ff1744, #ff4569);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* Dalgona Cookie Game */
+.cookie-container {
+    background: #8D6E63;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+#cookieCanvas {
+    border: 3px solid #5D4037;
+    border-radius: 15px;
+    background: #FFAB40;
+    cursor: crosshair;
+}
+
+.lives {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.precision {
+    font-size: 1.1rem;
+    color: #4caf50;
+}
+
+/* Tug of War Game */
+.rope-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.team-members {
+    font-size: 2rem;
+}
+
+.team-name {
+    font-weight: 700;
+    color: #ff1744;
+}
+
+.rope {
+    position: relative;
+    width: 300px;
+    height: 20px;
+    background: #8D6E63;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rope-marker {
+    position: absolute;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.rope-line {
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(90deg, #6D4C41, #8D6E63, #6D4C41);
+    border-radius: 5px;
+}
+
+.tug-button {
+    background: #ff1744;
+    color: #ffffff;
+    border: none;
+    padding: 20px 40px;
+    border-radius: 25px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.tug-button:hover {
+    background: #ff4569;
+    transform: scale(1.05);
+}
+
+.tug-button:active {
+    transform: scale(0.95);
+}
+
+.power-bar {
+    width: 100%;
+    height: 30px;
+    background: #333;
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.power {
+    height: 100%;
+    background: linear-gradient(90deg, #4caf50, #8bc34a);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* Marbles Game */
+.marble-game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.opponent {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.character {
+    font-size: 3rem;
+}
+
+.speech-bubble {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    position: relative;
+    max-width: 300px;
+}
+
+.speech-bubble::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid rgba(255, 255, 255, 0.1);
+}
+
+.marble-choices {
+    display: flex;
+    gap: 20px;
+}
+
+.choice-button {
+    background: #ff1744;
+    color: #ffffff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.choice-button:hover {
+    background: #ff4569;
+    transform: translateY(-3px);
+}
+
+.betting {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+}
+
+.betting input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #ff1744;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    width: 80px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.betting button {
+    background: #4caf50;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.betting button:hover {
+    background: #66bb6a;
+}
+
+.marble-count {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* Glass Bridge Game */
+.bridge-container {
+    perspective: 1000px;
+    margin: 20px 0;
+}
+
+.bridge {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 400px;
+}
+
+.glass-panel {
+    width: 180px;
+    height: 60px;
+    background: linear-gradient(45deg, #87CEEB, #B0E0E6);
+    border: 2px solid #4682B4;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #2C3E50;
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+}
+
+.glass-panel:hover::before {
+    transform: translateX(100%);
+}
+
+.glass-panel:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(70, 130, 180, 0.5);
+}
+
+.glass-panel.safe {
+    background: linear-gradient(45deg, #4caf50, #66bb6a);
+    border-color: #2e7d32;
+}
+
+.glass-panel.broken {
+    background: linear-gradient(45deg, #f44336, #ef5350);
+    border-color: #c62828;
+    animation: shatter 0.5s ease;
+}
+
+@keyframes shatter {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1) rotate(5deg); }
+    100% { transform: scale(0.8) rotate(-5deg); opacity: 0.5; }
+}
+
+/* Game Status */
+.game-status {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.game-status p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+/* Game Over and Win Screens */
+.game-over-content, .win-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.game-over-content h2, .win-content h2 {
+    font-size: 3rem;
+    color: #ff1744;
+    margin-bottom: 20px;
+    text-shadow: 0 0 30px rgba(255, 23, 68, 0.5);
+}
+
+.win-content h2 {
+    color: #4caf50;
+    text-shadow: 0 0 30px rgba(76, 175, 80, 0.5);
+}
+
+.game-over-content p, .win-content p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: #cccccc;
+}
+
+.prize {
+    font-size: 2rem;
+    color: #ffff00;
+    font-weight: 700;
+    margin: 20px 0;
+    text-shadow: 0 0 20px rgba(255, 255, 0, 0.5);
+}
+
+.game-over-buttons, .win-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.restart-button, .menu-button, .continue-button {
+    background: #ff1744;
+    color: #ffffff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.menu-button {
+    background: #666;
+}
+
+.continue-button {
+    background: #4caf50;
+}
+
+.restart-button:hover, .menu-button:hover, .continue-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .logo h1 {
+        font-size: 2rem;
+    }
+    
+    .squid-symbol {
+        font-size: 2.5rem;
+    }
+    
+    .game-button {
+        padding: 15px 20px;
+        font-size: 1rem;
+    }
+    
+    .game-header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .game-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .game-area {
+        padding: 20px;
+    }
+    
+    .rope-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .rope {
+        width: 200px;
+    }
+    
+    .marble-choices {
+        flex-direction: column;
+    }
+    
+    .glass-panel {
+        width: 140px;
+        height: 50px;
+    }
+    
+    .bridge {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-over-buttons, .win-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .choice-button {
+        width: 100%;
+    }
+    
+    .betting {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
